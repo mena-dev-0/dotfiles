@@ -1,5 +1,6 @@
 #!/bin/bash
 
+printf "\nHey,Welcome to my script to download all of my configuration! \nDon't execute the script as root \nEnter your root password ! \n"
 sudo -v
 while true; do sudo -n true; sleep 60; done 2>/dev/null &
 SUDO_KEEPALIVE_PID=$!
@@ -8,7 +9,6 @@ mkdir -p /home/$USER/Downloads/logs
 exec > >(tee "/home/$USER/Downloads/logs/full.log") 2> >(tee "/home/$USER/Downloads/logs/errors.log" >&2)
 cd /home/$USER/Downloads/
 
-printf "\nHey,Welcome to my script to download all of my configuration! \n"
 printf "[1|5] Do you have a nvidia gpu ? [y/n] \n"
 read -r nvidia
 printf "[2|5]Do you want to download chrome ? [y/n] \n"
@@ -17,7 +17,7 @@ printf "[3|5]Do you want to install snap and flatpack ? [y/n] \n"
 read -r snapflat
 printf "[4|5]Do you want to install simple screen recorder (ssr) ? [y/n] \n"
 read -r ssr
-printf "[5|5]Do you want to export my config to zsh ? [y/n] \n"
+printf "[5|5]Do you want to export my config to your zsh shell ? [y/n] \n"
 read -r zsh
 printf "Beginning the installation\n"
 
@@ -27,9 +27,10 @@ sudo apt full-upgrade -y
 
 printf "\n=============\n[1]Upgraded \n=============\n"
 
-sudo apt install -y htop redshift vlc nnn neofetch vnstat acpi nitrogen lxappearance ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev alacarte i3 fonts-noto android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim virtualbox  wireplumber libnotify-bin pandoc kitty zsh git wget steam
+sudo apt install -y htop redshift vlc nnn neofetch vnstat acpi nitrogen ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 fonts-noto android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim virtualbox  wireplumber libnotify-bin pandoc kitty zsh git wget steam xsel power-profiles-daemon gamescope
 printf "\n=============\n[2]tools installed \n=============\n"
 
+powerprofilesctl set balanced
 timedatectl set-local-rtc 1
 sudo systemctl start vnstat.service 
 sudo systemctl enable vnstat.service
@@ -39,7 +40,7 @@ update-alternatives --set x-session-manager /usr/bin/i3
 printf "\n=============\n[3] i3 is the default now\n=============\n"
 
 if [ "$nvidia" = "y" ]; then
-	sudo apt install -y nvidia-driver nvidia-cuda-toolkit
+	sudo apt install -y nvidia-driver nvidia-cuda-toolkit nvidia-smi
 	printf "\n=============\n[4]installed nvidia drivers\n=============\n"
 fi
 
@@ -49,7 +50,7 @@ if [ "$chrome" = "y" ]; then
 	sudo apt install -f -y
 	sudo mv /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.stop-updating
 	sudo apt purge -y chromium*  firefox-esr
-	printf "\n=============\n[5] installed chrome and firefox removed\n=============\n"
+	printf "\n=============\n[5] installed chrome. Firefox removed\n=============\n"
 fi
 
 if [ "$snapflat" = "y" ]; then
@@ -58,7 +59,6 @@ if [ "$snapflat" = "y" ]; then
 	sudo systemctl start snapd.apparmor.service
 	sudo snap install chatgpt-desktop-client
 	sudo snap install deepseek-desktop
-	winetricks mono210
 	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	flatpak install --noninteractive flathub com.usebottles.bottles
 	flatpak install --noninteractive flathub com.rtosta.zapzap
@@ -78,19 +78,12 @@ if [ "$ssr" = "y" ]; then
 fi
 
 if [ "$zsh" = "y" ]; then
-	echo "" >> /home/$USER/.zshrc
-	echo "neofetch" >> /home/$USER/.zshrc
-	echo 'NNN_FCOLORS="4e6a8c9dbfbca6e2d4c7e5b6df"' >> /home/$USER/.zshrc
-	echo "export NNN_OPENER=mousepad" >> /home/$USER/.zshrc
-	echo "alias conf3='nano /home/$USER/.config/i3/config' " >> /home/$USER/.zshrc
-	echo "alias ytplay='yt-dlp -f \"bestvideo[height<=720]+bestaudio/best[height<=720]\" --write-subs --sub-lang en --write-auto-sub --write-description --convert-subs srt --embed-subs --merge-output-format mp4 -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\"'" >> /home/$USER/.zshrc
-
-	printf "\n=============\n[8] zsh configuration is now loaded \n=============\n"
+	cat .d4con/scripts/shell.txt >> /home/$USER/.zshrc
+	printf "\n=============\n[8] Shell configuration is now loaded \n=============\n"
 fi
 
 chmod +x scripts/*
 sudo cp scripts/* /usr/local/bin
-
 
 cp -r .d4con /home/$USER/
 rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nnn
@@ -100,7 +93,9 @@ ln -sf /home/$USER/.d4con/i3status  /home/$USER/.config
 ln -sf /home/$USER/.d4con/kitty  /home/$USER/.config
 ln -sf /home/$USER/.d4con/neofetch  /home/$USER/.config
 ln -sf /home/$USER/.d4con/nnn  /home/$USER/.config
-sudo ln -sf /home/$USER/.d4con/xorg.conf.d /etc/X11
+mkdir -p /etc/X11/xorg.conf.d
+sudo cp /home/$USER/.d4con/scripts/90-touchpad.conf /etc/X11/xorg.conf.d
+
 printf "\n=============\n[9]Symbolic links is Created Successfully\n=============\n"
 
 printf "\nSetup completed successfully!\nCheck the Logs folder for more info! \n"
