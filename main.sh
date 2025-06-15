@@ -62,6 +62,9 @@ if [ "$snapflat" = "y" ]; then
 	flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	flatpak install --noninteractive flathub com.usebottles.bottles
 	flatpak install --noninteractive flathub com.rtosta.zapzap
+	sudo touch /usr/local/bin/bootles /usr/local/bin/whatsapp
+	sudo echo "flatpak run com.usebottles.bottles" >> /usr/local/bin/bootles
+	sudo echo "flatpak run com.rtosta.zapzap" >> /usr/local/bin/whatsapp
 	printf "\n=============\n[6]installed wine and flatpack and thier sub utilities\n=============\n"
 fi
 
@@ -82,9 +85,7 @@ if [ "$zsh" = "y" ]; then
 	printf "\n=============\n[8] Shell configuration is now loaded \n=============\n"
 fi
 
-chmod +x scripts/*
-sudo cp scripts/* /usr/local/bin
-
+sudo cp .d4con/scripts/numlock /usr/local/bin
 cp -r .d4con /home/$USER/
 rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nnn
 ln -sf /home/$USER/.d4con/dunst  /home/$USER/.config
