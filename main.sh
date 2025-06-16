@@ -9,15 +9,13 @@ mkdir -p /home/$USER/Downloads/logs
 exec > >(tee "/home/$USER/Downloads/logs/full.log") 2> >(tee "/home/$USER/Downloads/logs/errors.log" >&2)
 cd /home/$USER/Downloads/
 
-printf "[1|5] Do you have a nvidia gpu ? [y/n] \n"
+printf "[1|4] Do you have a nvidia gpu ? [y/n] \n"
 read -r nvidia
-printf "[2|5]Do you want to download chrome ? [y/n] \n"
+printf "[2|4]Do you want to download chrome ? [y/n] \n"
 read -r chrome
-printf "[3|5]Do you want to install snap and flatpack ? [y/n] \n"
+printf "[3|4]Do you want to install snap and flatpack ? [y/n] \n"
 read -r snapflat
-printf "[4|5]Do you want to install simple screen recorder (ssr) ? [y/n] \n"
-read -r ssr
-printf "[5|5]Do you want to export my config to your zsh shell ? [y/n] \n"
+printf "[4|4]Do you want to export my config to your zsh shell ? [y/n] \n"
 read -r zsh
 printf "Beginning the installation\n"
 
@@ -27,9 +25,10 @@ sudo apt full-upgrade -y
 
 printf "\n=============\n[1]Upgraded \n=============\n"
 
-sudo apt install -y htop redshift vlc nnn neofetch vnstat acpi nitrogen ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 fonts-noto android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim virtualbox  wireplumber libnotify-bin pandoc kitty zsh git wget steam xsel power-profiles-daemon gamescope
+sudo apt install -y htop redshift vlc nnn neofetch vnstat acpi nitrogen ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 fonts-noto android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim virtualbox  wireplumber libnotify-bin pandoc kitty zsh git wget steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms
 printf "\n=============\n[2]tools installed \n=============\n"
 
+sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
 powerprofilesctl set balanced
 timedatectl set-local-rtc 1
 sudo systemctl start vnstat.service 
@@ -68,23 +67,13 @@ if [ "$snapflat" = "y" ]; then
 	printf "\n=============\n[6]installed wine and flatpack and thier sub utilities\n=============\n"
 fi
 
-if [ "$ssr" = "y" ]; then
-	
-	git clone https://github.com/MaartenBaert/ssr.git
-	sudo apt install -y build-essential cmake pkg-config desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev \
-	qt5-qmake qttools5-dev qtbase5-dev libqt5x11extras5-dev libavformat-dev libavcodec-dev libavutil-dev \
-	libswscale-dev libasound2-dev libpulse-dev libjack-dev libx11-dev libxext-dev libxfixes-dev libxi-dev \
-	libxinerama-dev libv4l-dev g++-multilib libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 libx11-dev:i386 libxfixes-dev:i386
-	chmod +x ssr/simple-build-and-install
-	ENABLE_32BIT_GLINJECT=FALSE ./ssr/simple-build-and-install
-	printf "\n=============\n[7]SSR in now installed\n=============\n"
-fi
-
 if [ "$zsh" = "y" ]; then
+	sudo chsh -s $(which zsh)
 	cat .d4con/scripts/shell.txt >> /home/$USER/.zshrc
 	printf "\n=============\n[8] Shell configuration is now loaded \n=============\n"
 fi
 
+chmod +x .d4con/scripts/numlock
 sudo cp .d4con/scripts/numlock /usr/local/bin
 cp -r .d4con /home/$USER/
 rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nnn

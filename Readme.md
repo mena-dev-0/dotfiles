@@ -102,13 +102,13 @@ chmod +x main.sh
 | `neofetch`               | Display system info in terminal                    |
 | `nitrogen`               | Wallpaper manager                              |
 | `nnn`                    | Terminal-based file manager                    |
+| `obs`                    | Screen recording and Streaming                 |
 | `okular`                 | Document viewer                        |
 | `pandoc`                 | Convert between documents formats locally         |
 | `picom`                  | Compositor for transparency and shadows        |
 | `power-profiles-daemon`  | Power management utility                       |
 | `redshift-gtk`           | Blue light filter for eye comfort              |
 | `ristretto`              | Lightweight image viewer                       |
-| `ssr`                    | Simple Screen Recorder      |
 | `stacer`                 | GUI System optimizer and cleaner               |
 | `virtualbox`             | Virtual machine platform                       |
 | `vlc`                    | Media player                                   |
