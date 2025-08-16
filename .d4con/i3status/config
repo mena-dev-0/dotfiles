@@ -39,7 +39,7 @@ wireless _first_ {
 
 ethernet _first_ {
         format_up = " %ip (%speed)"
-        format_down = "  "
+        format_down = "    "
         color_bad = "#40E0D0"
 	color_good = "#40E0D0"
 }
@@ -57,7 +57,7 @@ battery all {
 }
 
 load {
-        format = "  %1min"
+        format = "   %1min"
 }
 
 cpu_temperature 0 {
@@ -66,8 +66,8 @@ cpu_temperature 0 {
 }
 
 volume master {
-        format = "   %volume"
-        format_muted = "  (%volume)"
+        format = "    %volume"
+        format_muted = "   (%volume)"
         device = "default"
         
 }
@@ -78,5 +78,5 @@ memory  {
 }
 
 tztime local {
-        format = "%a ,%d/%m/%Y 〱〱 %H:%M 〱〱"
+        format = " %a ,%d/%m/%Y  ▍▍ %H:%M  ▍ ▍ ▍"
 }

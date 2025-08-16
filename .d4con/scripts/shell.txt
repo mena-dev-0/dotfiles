@@ -1,8 +1,11 @@
 
 neofetch
 NNN_FCOLORS="4e6a8c9dbfbca6e2d4c7e5b6df"
-export NNN_OPENER=mousepad
 alias conf3='nano /home/$USER/.config/i3/config' 
 alias ytplay='yt-dlp -f \"bestvideo[height<=720]+bestaudio/best[height<=720]\" --write-subs --sub-lang en --write-auto-sub --write-description --convert-subs srt --embed-subs --merge-output-format mp4 -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\"'
 alias convmd=pandoc --pdf-engine weasyprint
 alias clip=xsel --clipboard
+
+cheat() {
+  curl "cheat.sh/$*"
+}

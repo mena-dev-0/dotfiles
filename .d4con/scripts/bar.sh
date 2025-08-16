@@ -79,6 +79,6 @@ i3status | (
     update_rate
     update_rx_data
     update_brightness
-    echo ",[{\"full_text\":\"  ${rate} 〱 Today: ${rx_data} 〱 ☀ ${brightness_level}%\" },${line#,\[}" || exit 1
+    echo ",[{\"full_text\":\"  ${rate}  ▍ Today: ${rx_data}  ▍ ☀ ${brightness_level}%\" },${line#,\[}" || exit 1
   done
 )

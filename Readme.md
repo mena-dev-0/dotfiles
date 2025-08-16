@@ -1,13 +1,7 @@
-
-
-  
-
-
 # My Linux System Configuration
 <p align="center">
   <img src="https://socialify.git.ci/mena-dev-0/dotfiles/image?font=Raleway&name=1&owner=1&pattern=Charlie+Brown&theme=Dark" alt="project-image">
   <br>
-  <img src="https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kalilinux&logoColor=white">
   <img src="https://img.shields.io/badge/i3WM-%234285F4.svg?style=for-the-badge&logo=i3&logoColor=white">
   <img src="https://img.shields.io/badge/Zsh-1B2A34?style=for-the-badge&logo=gnu-bash&logoColor=white">
 </p>
@@ -25,13 +19,13 @@
 6.1 [MOD +](#mod-)
 6.2 [MOD + SHIFT +](#mod--shift-)
 6.3 [Custom Bindings](#custom-bindings)  
-7. [Useful Tools](#useful-tools-not-included)
+7. [Useful Tools](#useful-tools-to-be-considered-not-included)
 
 
 
 ##  About This Setup
 
-My personalized Linux environment optimized for development, gaming, and productivity. This repository contains everything needed to recreate my Kali Linux setup:
+My personalized Linux environment optimized for development, gaming, and productivity. This repository contains everything needed to recreate my Debian Linux setup:
 
 - **Automated installation script** - Sets up the entire system with one command
 - **Keyboard-centric workflow** - i3 window manager with efficient key bindings
@@ -39,7 +33,7 @@ My personalized Linux environment optimized for development, gaming, and product
 - **Gaming-ready environment** - NVIDIA drivers, Steam, and compatibility tools
 - **Unified configuration** - Dotfiles for all core applications
 
-> **Designed for Kali Linux** but adaptable to other Debian-based distributions
+> **Designed for any Debian-based distribution**
 
 
 
@@ -84,6 +78,7 @@ chmod +x main.sh
 |--------------------------|------------------------------------------------|
 | `acpi`                   | Check CPU temperature and battery info          |
 | `bleachbit`              | GUI System cleaner                  |
+| `brave`					| Browser 								|
 | `chatgpt-desktop-client` | ChatGPT desktop app                 |
 | `com.rtosta.zapzap`      | WhatsApp desktop client (via Flatpak)          |
 | `com.usebottles.bottles` | Run Windows software using Wine (GUI manager)  |
@@ -91,7 +86,6 @@ chmod +x main.sh
 | `diodon`                 | Clipboard manager                              |
 | `dunst`                  | Lightweight notification daemon                |
 | `ffmpeg`                 | Multimedia framework for audio/video tasks     |
-| `fonts-noto`             | Clean universal font for UI                    |
 | `git`                    | Version control system                         |
 | `gparted`                | GUI partition editor                           |
 | `grub-customizer`        | GUI tool to configure GRUB bootloader          |
@@ -125,6 +119,7 @@ chmod +x main.sh
 | `steam`     | Gaming platform and launcher            |
 | `nvidia`    | nvidia drivers                          |
 | `gamescope` | Game-mode micro-compositor              |
+| `goverlay`  |  Graphical UI to help manage Vulkan / OpenGL overlays |
 
 ####  Install Manually [Not Included]
 
@@ -144,13 +139,19 @@ chmod +x main.sh
 A set of useful Zsh aliases for common tasks:
 
 - conf3 = Edit the i3 configuration file
->nano /home/$USER/.config/i3/config
+> nano /home/$USER/.config/i3/config
+
 - ytplay = Download an entire YouTube playlist with English subtitles and description
->yt-dlp -f \"bestvideo[height<=720]+bestaudio/best[height<=720]\" --write-subs --sub-lang en --write-auto-sub --write-description --convert-subs srt --embed-subs --merge-output-format mp4 -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\"
+> yt-dlp -f \"bestvideo[height<=720]+bestaudio/best[height<=720]\" --write-subs --sub-lang en --write-auto-sub --write-description --convert-subs srt --embed-subs --merge-output-format mp4 -o \"%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s\"
+
 - convmd = Convert files into pdf using WeasyPrint (using it for markdown files)
 > pandoc --pdf-engine weasyprint
+
 - clip = Copy text to the system clipboard
->xsel --clipboard
+> xsel --clipboard
+- cheat = to get simple details about any command
+> cheat() {curl "cheat.sh/$*"}
+
 
 ## Key Bindings
 
@@ -170,7 +171,7 @@ A set of useful Zsh aliases for common tasks:
 > Setting $MOD = Windows key
 ####   Applications
 - `MOD + CTRL + Z` → Open File Manager  
-- `MOD + CTRL + C` → Launch Chrome  
+- `MOD + CTRL + C` → Launch Brave  
 - `MOD + CTRL + V` → Open VS Code  
 - `MOD + CTRL + M` → Open Mousepad  
 - `MOD + CTRL + A` → Launch AnyType  
@@ -201,9 +202,11 @@ A set of useful Zsh aliases for common tasks:
 - `MOD + CTRL + Q` → Power Menu
 
 
-## Useful Tools [Not included]
+## Useful tools to be considered [Not included]
 
 - alacarte 
->menu editor 
+> menu editor 
 - lxappearance
 > theme switcher
+- Time shift
+> gui snapshot management tool  

@@ -11,8 +11,8 @@ cd /home/$USER/Downloads/
 
 printf "[1|4] Do you have a nvidia gpu ? [y/n] \n"
 read -r nvidia
-printf "[2|4]Do you want to download chrome ? [y/n] \n"
-read -r chrome
+printf "[2|4]Do you want to download brave ? [y/n] \n"
+read -r brave
 printf "[3|4]Do you want to install snap and flatpack ? [y/n] \n"
 read -r snapflat
 printf "[4|4]Do you want to export my config to your zsh shell ? [y/n] \n"
@@ -21,18 +21,18 @@ printf "Beginning the installation\n"
 
 sudo dpkg --add-architecture i386
 sudo apt update 
+sudo apt install -y vnstat
+sudo systemctl start vnstat.service 
+sudo systemctl enable vnstat.service
 sudo apt full-upgrade -y 
-
 printf "\n=============\n[1]Upgraded \n=============\n"
 
-sudo apt install -y htop redshift vlc nnn neofetch vnstat acpi nitrogen ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 fonts-noto android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim virtualbox  wireplumber libnotify-bin pandoc kitty zsh git wget steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms
+sudo apt install -y htop redshift vlc nnn neofetch acpi nitrogen ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim virtualbox  wireplumber libnotify-bin pandoc kitty zsh git wget steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms goverlay fonts-font-awesome fonts-noto-color-emoji
 printf "\n=============\n[2]tools installed \n=============\n"
 
 sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
 powerprofilesctl set balanced
 timedatectl set-local-rtc 1
-sudo systemctl start vnstat.service 
-sudo systemctl enable vnstat.service
 sudo systemctl start bluetooth
 update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 60
 update-alternatives --set x-session-manager /usr/bin/i3
@@ -43,13 +43,10 @@ if [ "$nvidia" = "y" ]; then
 	printf "\n=============\n[4]installed nvidia drivers\n=============\n"
 fi
 
-if [ "$chrome" = "y" ]; then
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo dpkg -i google-chrome-stable_current_amd64.deb
-	sudo apt install -f -y
-	sudo mv /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.stop-updating
+if [ "$brave" = "y" ]; then
+	sudo curl -fsS https://dl.brave.com/install.sh | sh
 	sudo apt purge -y chromium*  firefox-esr
-	printf "\n=============\n[5] installed chrome. Firefox removed\n=============\n"
+	printf "\n=============\n[5] installed Brave \n=============\n"
 fi
 
 if [ "$snapflat" = "y" ]; then
@@ -70,10 +67,11 @@ fi
 if [ "$zsh" = "y" ]; then
 	sudo chsh -s $(which zsh)
 	cat .d4con/scripts/shell.txt >> /home/$USER/.zshrc
+	source /home/$USER/.zshrc
 	printf "\n=============\n[8] Shell configuration is now loaded \n=============\n"
 fi
 
-chmod +x .d4con/scripts/numlock
+chmod +x .d4con/scripts/*
 sudo cp .d4con/scripts/numlock /usr/local/bin
 cp -r .d4con /home/$USER/
 rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nnn
