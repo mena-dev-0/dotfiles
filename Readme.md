@@ -2,23 +2,25 @@
 <p align="center">
   <img src="https://socialify.git.ci/mena-dev-0/dotfiles/image?font=Raleway&name=1&owner=1&pattern=Charlie+Brown&theme=Dark" alt="project-image">
   <br>
+  <img src="https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white">
   <img src="https://img.shields.io/badge/i3WM-%234285F4.svg?style=for-the-badge&logo=i3&logoColor=white">
   <img src="https://img.shields.io/badge/Zsh-1B2A34?style=for-the-badge&logo=gnu-bash&logoColor=white">
 </p>
+
 
 ## Table of Contents
 1. [About](#about-this-setup)
 2. [Features](#key-features)
 3. [Installation Steps](#installation-steps)
 4. [Packages Installed](#packages-installed)
- 4.1  [Core Utilities](#core-utilities)
- 4.2 [Gaming & Drivers](#gaming--drivers)  
- 4.3 [Installed Localy (Not Included)](#install-manually-not-included)
+   - [Core Utilities](#core-utilities)
+   - [Gaming & Drivers](#gaming--drivers)  
+   - [Installed Localy (Not Included)](#install-manually-not-included)
 5. [Zsh Configuration](#zsh-aliases)
 6. [Keybindings](#key-bindings)
-6.1 [MOD +](#mod-)
-6.2 [MOD + SHIFT +](#mod--shift-)
-6.3 [Custom Bindings](#custom-bindings)  
+   - [MOD +](#mod-)
+   - [MOD + SHIFT +](#mod--shift-)
+   - [Custom Bindings](#custom-bindings)  
 7. [Useful Tools](#useful-tools-to-be-considered-not-included)
 
 
@@ -86,7 +88,6 @@ chmod +x main.sh
 | `diodon`                 | Clipboard manager                              |
 | `dunst`                  | Lightweight notification daemon                |
 | `ffmpeg`                 | Multimedia framework for audio/video tasks     |
-| `git`                    | Version control system                         |
 | `gparted`                | GUI partition editor                           |
 | `grub-customizer`        | GUI tool to configure GRUB bootloader          |
 | `htop`                   | Process viewer                     |
@@ -104,7 +105,6 @@ chmod +x main.sh
 | `redshift-gtk`           | Blue light filter for eye comfort              |
 | `ristretto`              | Lightweight image viewer                       |
 | `stacer`                 | GUI System optimizer and cleaner               |
-| `virtualbox`             | Virtual machine platform                       |
 | `vlc`                    | Media player                                   |
 | `vnstat`                 | Track network usage over time                  |
 | `xsel`                   | Clipboard manager (CLI)                        |

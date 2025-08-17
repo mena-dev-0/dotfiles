@@ -27,15 +27,15 @@ sudo systemctl enable vnstat.service
 sudo apt full-upgrade -y 
 printf "\n=============\n[1]Upgraded \n=============\n"
 
-sudo apt install -y htop redshift vlc nnn neofetch acpi nitrogen ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim virtualbox  wireplumber libnotify-bin pandoc kitty zsh git wget steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms goverlay fonts-font-awesome fonts-noto-color-emoji
+sudo apt install -y htop redshift vlc nnn neofetch acpi nitrogen curl ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim wireplumber libnotify-bin pandoc kitty zsh steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms goverlay fonts-font-awesome fonts-noto-color-emoji
 printf "\n=============\n[2]tools installed \n=============\n"
 
 sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
 powerprofilesctl set balanced
 timedatectl set-local-rtc 1
 sudo systemctl start bluetooth
-update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 60
-update-alternatives --set x-session-manager /usr/bin/i3
+sudo update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 60
+sudo update-alternatives --set x-session-manager /usr/bin/i3
 printf "\n=============\n[3] i3 is the default now\n=============\n"
 
 if [ "$nvidia" = "y" ]; then
@@ -66,14 +66,15 @@ fi
 
 if [ "$zsh" = "y" ]; then
 	sudo chsh -s $(which zsh)
-	cat .d4con/scripts/shell.txt >> /home/$USER/.zshrc
+	cat d4con/scripts/shell.txt >> /home/$USER/.zshrc
 	source /home/$USER/.zshrc
 	printf "\n=============\n[8] Shell configuration is now loaded \n=============\n"
 fi
 
-chmod +x .d4con/scripts/*
-sudo cp .d4con/scripts/numlock /usr/local/bin
-cp -r .d4con /home/$USER/
+chmod +x d4con/scripts/*
+sudo cp d4con/scripts/numlock /usr/local/bin
+cp -r d4con /home/$USER/
+mv /home/$USER/d4con /home/$USER/.d4con 
 rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nnn
 ln -sf /home/$USER/.d4con/dunst  /home/$USER/.config
 ln -sf /home/$USER/.d4con/i3  /home/$USER/.config
@@ -85,6 +86,6 @@ mkdir -p /etc/X11/xorg.conf.d
 sudo cp /home/$USER/.d4con/scripts/90-touchpad.conf /etc/X11/xorg.conf.d
 
 printf "\n=============\n[9]Symbolic links is Created Successfully\n=============\n"
-
+vnstat | awk '/wlan0:/ {f=1} f && /today/ {print $2; exit}' 
 printf "\nSetup completed successfully!\nCheck the Logs folder for more info! \n"
 kill "$SUDO_KEEPALIVE_PID"
