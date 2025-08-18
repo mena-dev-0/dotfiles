@@ -17,10 +17,10 @@
    - [Gaming & Drivers](#gaming--drivers)  
    - [Installed Localy (Not Included)](#install-manually-not-included)
 5. [Zsh Configuration](#zsh-aliases)
-6. [Keybindings](#key-bindings)
-   - [MOD +](#mod-)
-   - [MOD + SHIFT +](#mod--shift-)
-   - [Custom Bindings](#custom-bindings)  
+6. [Key Bindings](#key-bindings)
+   - [MOD +](#1-mod-)
+   - [MOD + SHIFT +](#2-mod--shift-)
+   - [Custom Bindings](#custom-bindings)
 7. [Useful Tools](#useful-tools-to-be-considered-not-included)
 
 
@@ -78,28 +78,29 @@ chmod +x main.sh
 
 | Package                  | Description                                    |
 |--------------------------|------------------------------------------------|
-| `acpi`                   | Check CPU temperature and battery info          |
-| `bleachbit`              | GUI System cleaner                  |
-| `brave`					| Browser 								|
-| `chatgpt-desktop-client` | ChatGPT desktop app                 |
+| `acpi`                   | Check CPU temperature and battery info         |
+| `bleachbit`              | GUI System cleaner                             |
+| `brave`                  | Browser 								        |
+| `chatgpt-desktop-client` | ChatGPT desktop app                            |
 | `com.rtosta.zapzap`      | WhatsApp desktop client (via Flatpak)          |
 | `com.usebottles.bottles` | Run Windows software using Wine (GUI manager)  |
-| `deepseek-desktop`       | DeepSeek desktop app                            |
+| `deepseek-desktop`       | DeepSeek desktop app                           |
 | `diodon`                 | Clipboard manager                              |
 | `dunst`                  | Lightweight notification daemon                |
 | `ffmpeg`                 | Multimedia framework for audio/video tasks     |
 | `gparted`                | GUI partition editor                           |
 | `grub-customizer`        | GUI tool to configure GRUB bootloader          |
-| `htop`                   | Process viewer                     |
-| `lightdm`                | Display manager                          |
+| `htop`                   | Process viewer                                 |
+| `lightdm`                | Display manager                                |
 | `maim`                   | Screenshot tool                                |
 | `mousepad`               | Simple graphical text editor                   |
-| `neofetch`               | Display system info in terminal                    |
+| `neofetch`               | Display system info in terminal                |
+| `nethogs`                | Display in real time traffic                   |
 | `nitrogen`               | Wallpaper manager                              |
 | `nnn`                    | Terminal-based file manager                    |
 | `obs`                    | Screen recording and Streaming                 |
-| `okular`                 | Document viewer                        |
-| `pandoc`                 | Convert between documents formats locally         |
+| `okular`                 | Document viewer                                |
+| `pandoc`                 | Convert between documents formats locally      |
 | `picom`                  | Compositor for transparency and shadows        |
 | `power-profiles-daemon`  | Power management utility                       |
 | `redshift-gtk`           | Blue light filter for eye comfort              |
@@ -123,16 +124,16 @@ chmod +x main.sh
 
 ####  Install Manually [Not Included]
 
-| Package               | Description                                           |
+| Package                | Description                                           |
 |------------------------|-------------------------------------------------------|
 | `anytype`              | note-taking app            |
-| `cisco packet tracer`  | Cisco network simulator  |
-| `code`                 | Visual Studio Code               |
-| `freedownloadmanager`  | Download manager                      |
-| `heroic`               | Game launcher (open source)    |
-| `libreoffice`          | Full-featured office suite                            |
-| `telegram`             | Messaging app                     |
-| `zoom`                 | Meeting app                           |
+| `cisco packet tracer`  | Cisco network simulator    |
+| `code`                 | Visual Studio Code         |
+| `freedownloadmanager`  | Download manager           |
+| `heroic`               | Game launcher (open source)|
+| `libreoffice`          | Full-featured office suite |
+| `telegram`             | Messaging app              |
+| `zoom`                 | Meeting app                |
 
 
 ## Zsh aliases

@@ -220,7 +220,7 @@ bar {
 #=========================================================
 #===================Key Bindings==========================
 
-bindsym $mod+Ctrl+z  exec thunar  /media/Master
+bindsym $mod+Ctrl+z  exec thunar ~
 
 bindsym $mod+Ctrl+c  exec brave-browser
 bindsym $mod+Ctrl+v  exec code
@@ -239,7 +239,7 @@ bindsym $mod+Print exec maim --select "/home/$USER/Downloads/$(date +"%H_%M_%S")
 #=========================================================
 #=====================Exec================================
 exec_always ~/.d4con/scripts/mic.sh
-exec kitty -e nnn /media/Master
+#exec kitty -e nnn /media/Master
 exec_always "setxkbmap -layout us,ara  -variant euro -option 'grp:alts_toggle' "
 exec_always dunst
 exec_always nitrogen --restore
@@ -305,8 +305,8 @@ bindsym $mod+ctrl+Right gaps outer current minus 5
 #=========================================================
 #===================brightness============================
 
-bindsym $mod+Ctrl+bracketright      exec brightnessctl -d "amdgpu_bl1" set +5%
-bindsym $mod+Ctrl+bracketleft       exec brightnessctl -d "amdgpu_bl1" set 5%-
+bindsym $mod+Ctrl+bracketright      exec brightnessctl  set +5%
+bindsym $mod+Ctrl+bracketleft       exec brightnessctl  set 5%-
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-

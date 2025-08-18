@@ -7,7 +7,6 @@ SUDO_KEEPALIVE_PID=$!
 
 mkdir -p /home/$USER/Downloads/logs
 exec > >(tee "/home/$USER/Downloads/logs/full.log") 2> >(tee "/home/$USER/Downloads/logs/errors.log" >&2)
-cd /home/$USER/Downloads/
 
 printf "[1|4] Do you have a nvidia gpu ? [y/n] \n"
 read -r nvidia
@@ -27,7 +26,7 @@ sudo systemctl enable vnstat.service
 sudo apt full-upgrade -y 
 printf "\n=============\n[1]Upgraded \n=============\n"
 
-sudo apt install -y htop redshift vlc nnn neofetch acpi nitrogen curl ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim wireplumber libnotify-bin pandoc kitty zsh steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms goverlay fonts-font-awesome fonts-noto-color-emoji
+sudo apt install -y htop thunar xserver-xorg xinit redshift mousepad vlc nnn neofetch acpi nitrogen curl ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim wireplumber libnotify-bin pandoc kitty zsh steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms goverlay fonts-font-awesome fonts-noto-color-emoji nethogs
 printf "\n=============\n[2]tools installed \n=============\n"
 
 sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
@@ -66,26 +65,33 @@ fi
 
 if [ "$zsh" = "y" ]; then
 	sudo chsh -s $(which zsh)
-	cat d4con/scripts/shell.txt >> /home/$USER/.zshrc
-	source /home/$USER/.zshrc
+	cp d4con/scripts/zshrc /home/$USER/zshrc
+	mv /home/$USER/zshrc /home/$USER/.zshrc
+	source /home/$USER/.zshrc > /dev/null
 	printf "\n=============\n[8] Shell configuration is now loaded \n=============\n"
 fi
 
 chmod +x d4con/scripts/*
 sudo cp d4con/scripts/numlock /usr/local/bin
+sudo mkdir -p /etc/lightdm
+sudo cp d4con/scripts/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 cp -r d4con /home/$USER/
 mv /home/$USER/d4con /home/$USER/.d4con 
-rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nnn
+rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nnn /home/$USER/.config/nitrogen /home/$USER/.config/picom
+ln -sf /home/$USER/.d4con/nitrogen  /home/$USER/.config
 ln -sf /home/$USER/.d4con/dunst  /home/$USER/.config
 ln -sf /home/$USER/.d4con/i3  /home/$USER/.config
 ln -sf /home/$USER/.d4con/i3status  /home/$USER/.config
 ln -sf /home/$USER/.d4con/kitty  /home/$USER/.config
 ln -sf /home/$USER/.d4con/neofetch  /home/$USER/.config
 ln -sf /home/$USER/.d4con/nnn  /home/$USER/.config
+ln -sf /home/$USER/.d4con/picom /home/$USER/.config
+mkdir -p ~/.config/Thunar
+cp /home/$USER/.d4con/scripts/Thunar.xml  ~/.config/Thunar
+mv ~/.config/Thunar/Thunar.xml ~/.config/Thunar/uca.xml
 mkdir -p /etc/X11/xorg.conf.d
 sudo cp /home/$USER/.d4con/scripts/90-touchpad.conf /etc/X11/xorg.conf.d
 
 printf "\n=============\n[9]Symbolic links is Created Successfully\n=============\n"
-vnstat | awk '/wlan0:/ {f=1} f && /today/ {print $2; exit}' 
-printf "\nSetup completed successfully!\nCheck the Logs folder for more info! \n"
+printf "\nSetup completed successfully!\nCheck the Logs folder that is located in downloads folder for more info! \n"
 kill "$SUDO_KEEPALIVE_PID"
