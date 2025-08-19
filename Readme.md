@@ -18,7 +18,7 @@
    - [Installed Localy (Not Included)](#install-manually-not-included)
 5. [Zsh Configuration](#zsh-aliases)
 6. [Key Bindings](#key-bindings)
-   - [MOD +](#1-mod-)
+   - [MOD +](#1-mod--)
    - [MOD + SHIFT +](#2-mod--shift-)
    - [Custom Bindings](#custom-bindings)
 7. [Useful Tools](#useful-tools-to-be-considered-not-included)
@@ -124,8 +124,8 @@ chmod +x main.sh
 
 ####  Install Manually [Not Included]
 
-| Package                | Description                                           |
-|------------------------|-------------------------------------------------------|
+| Package                | Description                |
+|------------------------|----------------------------|
 | `anytype`              | note-taking app            |
 | `cisco packet tracer`  | Cisco network simulator    |
 | `code`                 | Visual Studio Code         |
