@@ -106,6 +106,7 @@ chmod +x main.sh
 | `redshift-gtk`           | Blue light filter for eye comfort              |
 | `ristretto`              | Lightweight image viewer                       |
 | `stacer`                 | GUI System optimizer and cleaner               |
+| `Thunar`                 | File Manager                                   | 
 | `vlc`                    | Media player                                   |
 | `vnstat`                 | Track network usage over time                  |
 | `xsel`                   | Clipboard manager (CLI)                        |
