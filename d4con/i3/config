@@ -238,9 +238,9 @@ bindsym $mod+Print exec maim --select "/home/$USER/Downloads/$(date +"%H_%M_%S")
 ########========########========########========########========########
 #=========================================================
 #=====================Exec================================
-exec_always ~/.d4con/scripts/mic.sh
+exec ~/.d4con/scripts/mic.sh
 #exec kitty -e nnn /media/Master
-exec_always "setxkbmap -layout us,ara  -variant euro -option 'grp:alts_toggle' "
+exec_always "setxkbmap -layout us,ara  -variant 'euro,digits' -option 'grp:alts_toggle' "
 exec_always dunst
 exec_always nitrogen --restore
 exec_always blueman-applet

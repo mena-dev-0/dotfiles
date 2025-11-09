@@ -21,11 +21,15 @@
    - [MOD +](#1-mod--)
    - [MOD + SHIFT +](#2-mod--shift-)
    - [Custom Bindings](#custom-bindings)
-7. [Useful Tools](#useful-tools-to-be-considered-not-included)
+7. [Bar Content](#bar-content)
+8. [Useful Tools](#useful-tools-to-be-considered-not-included)
+
 
 
 
 ##  About This Setup
+
+ ![thumbnail](assets/thumbnail.png)
 
 My personalized Linux environment optimized for development, gaming, and productivity. This repository contains everything needed to recreate my Debian Linux setup:
 
@@ -36,7 +40,6 @@ My personalized Linux environment optimized for development, gaming, and product
 - **Unified configuration** - Dotfiles for all core applications
 
 > **Designed for any Debian-based distribution**
-
 
 
 
@@ -203,6 +206,24 @@ A set of useful Zsh aliases for common tasks:
 - `ALTs` → Switch language (EN , AR)
 - `MOD + CTRL + Q` → Power Menu
 
+
+
+## Bar Content
+![Bar](assets/bar.png)
+
+1. Apps tray
+2. Time 
+3. Date
+4. Memory usage
+5. Cpu temperature
+6. Cpu core clock
+7. Volume
+8. Battery Percentage
+9. Lan IP
+10. Wan IP
+11. Brightness Level
+12. Total Download Traffic per day
+13. Traffic Meter
 
 ## Useful tools to be considered [Not included]
 

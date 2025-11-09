@@ -10,11 +10,11 @@ exec > >(tee "/home/$USER/Downloads/logs/full.log") 2> >(tee "/home/$USER/Downlo
 
 printf "[1|4] Do you have a nvidia gpu ? [y/n] \n"
 read -r nvidia
-printf "[2|4]Do you want to download brave ? [y/n] \n"
+printf "[2|4]Do you want to download brave browser? [y/n] \n"
 read -r brave
-printf "[3|4]Do you want to install snap and flatpack ? [y/n] \n"
+printf "[3|4]Do you want to install snap, flatpack and all of its related binaries ? [y/n] \n"
 read -r snapflat
-printf "[4|4]Do you want to export my config to your zsh shell ? [y/n] \n"
+printf "[4|4]Do you want to export my zsh config to your shell and make zsh is the default? [y/n] \n"
 read -r zsh
 printf "Beginning the installation\n"
 
@@ -26,7 +26,8 @@ sudo systemctl enable vnstat.service
 sudo apt full-upgrade -y 
 printf "\n=============\n[1]Upgraded \n=============\n"
 
-sudo apt install -y htop thunar xserver-xorg xinit redshift mousepad vlc nnn neofetch acpi nitrogen curl ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim wireplumber libnotify-bin pandoc kitty zsh steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms goverlay fonts-font-awesome fonts-noto-color-emoji nethogs
+sudo apt install -y htop thunar xserver-xorg xinit redshift mousepad vlc nnn neofetch acpi nitrogen curl ffmpeg pkg-config qt5-qmake qtbase5-dev libqt5x11extras5-dev i3 android-sdk-platform-tools build-essential gdb g++ stacer redshift-gtk picom diodon grub-customizer atril ristretto pulseaudio-module-bluetooth yt-dlp lightdm bleachbit maim wireplumber libnotify-bin pandoc kitty zsh steam xsel power-profiles-daemon gamescope obs-studio v4l2loopback-dkms goverlay fonts-font-awesome fonts-noto-color-emoji nethogs xorg x11-xserver-utils
+
 printf "\n=============\n[2]tools installed \n=============\n"
 
 sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
@@ -44,7 +45,6 @@ fi
 
 if [ "$brave" = "y" ]; then
 	sudo curl -fsS https://dl.brave.com/install.sh | sh
-	sudo apt purge -y chromium*  firefox-esr
 	printf "\n=============\n[5] installed Brave \n=============\n"
 fi
 
@@ -93,5 +93,5 @@ mkdir -p /etc/X11/xorg.conf.d
 sudo cp /home/$USER/.d4con/scripts/90-touchpad.conf /etc/X11/xorg.conf.d
 
 printf "\n=============\n[9]Symbolic links is Created Successfully\n=============\n"
-printf "\nSetup completed successfully!\nCheck the Logs folder that is located in downloads folder for more info! \n"
+printf "\nSetup completed successfully!\nCheck the Logs folder that is located in Downloads folder for more info! \n"
 kill "$SUDO_KEEPALIVE_PID"
