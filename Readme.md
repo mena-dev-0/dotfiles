@@ -224,6 +224,7 @@ A set of useful Zsh aliases for common tasks:
 11. Brightness Level
 12. Total Download Traffic per day
 13. Traffic Meter
+14. Workspaces
 
 ## Useful tools to be considered [Not included]
 
