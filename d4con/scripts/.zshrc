@@ -263,7 +263,7 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH:/usr/local/sbin:/usr/sbin:/sbin"
 
-neofetch
+fastfetch
 NNN_FCOLORS="4e6a8c9dbfbca6e2d4c7e5b6df"
 
 alias conf3="nano ~/.config/i3/config"
