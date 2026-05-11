@@ -77,6 +77,7 @@ chmod +x main.sh
 | `build-essential` | Essential compilation tools (gcc, make, libc) for building software |
 | `curl` | Command-line tool for transferring data over network protocols  |
 | `diodon` | Lightweight GTK+ clipboard manager |
+| `fastfetch`| Display System info|
 | `ffmpeg` | Powerful multimedia framework to decode, encode, and transcode audio/video |
 | `file-roller` | Archive manager (extract and create zip, tar, rar files) |
 | `fonts-font-awesome` | Iconic font and CSS toolkit for rendering symbols |

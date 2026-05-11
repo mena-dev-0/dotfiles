@@ -110,6 +110,7 @@ tools=(
     "imagemagick"
     "fonts-lmodern"
     "lxappearance"
+    "fastfetch"
     "numlockx"
 )
 
@@ -170,28 +171,25 @@ fi
 chmod +x d4con/scripts/*
 cp -r d4con /home/$USER/.d4con
 mkdir -p ~/.config
-rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/neofetch /home/$USER/.config/nitrogen /home/$USER/.config/picom
+rm -rf /home/$USER/.config/dunst /home/$USER/.config/i3 /home/$USER/.config/i3status /home/$USER/.config/kitty /home/$USER/.config/nitrogen /home/$USER/.config/picom /home/$USER/.config/fastfetch
 ln -sf /home/$USER/.d4con/nitrogen  /home/$USER/.config
 ln -sf /home/$USER/.d4con/dunst  /home/$USER/.config
 ln -sf /home/$USER/.d4con/i3  /home/$USER/.config
 ln -sf /home/$USER/.d4con/i3status  /home/$USER/.config
 ln -sf /home/$USER/.d4con/kitty  /home/$USER/.config
-ln -sf /home/$USER/.d4con/neofetch  /home/$USER/.config
 ln -sf /home/$USER/.d4con/picom /home/$USER/.config
+ln -sf /home/d4/.d4con/fastfetch /home/$USER/.config
 
 sudo mkdir -p /etc/X11/xorg.conf.d
 sudo cp /home/$USER/.d4con/scripts/90-touchpad.conf /etc/X11/xorg.conf.d
 
-mkdir -p ~/.themes
+mkdir -p ~/.themes ~/.config/gtk-3.0
 tar -xf "/home/$USER/.d4con/scripts/Nordic-darker_theme.tar.xz" -C ~/.themes
+echo -e "[Settings]\ngtk-theme-name=Nordic-darker" > ~/.config/gtk-3.0/settings.ini
 
 
 tar -xf "/home/$USER/.d4con/scripts/SleekTheme-Dark_grub.tar.xz" -C /tmp/
 sudo "/tmp/SleekTheme-Dark/install.sh"
-
-tar -xf "/home/$USER/.d4con/scripts/neofetch-7.1.0.tar.xz" -C /tmp/
-cd /tmp/neofetch-7.1.0
-sudo make install
 
 
 if [ "$zsh" = "y" ]; then
