@@ -141,7 +141,15 @@ chmod +x main.sh
 | `zsh` | The Z shell|
 | `zsh-autosuggestions` | autosuggestions plugin for Zsh |
 
+#### Install the GRUB Theme
 
+If you want to install the GRUB theme:
+ 
+  
+```bash  
+tar -xf "/home/$USER/.d4con/scripts/SleekTheme-Dark_grub.tar.xz" -C /tmp/  
+sudo "/tmp/SleekTheme-Dark/install.sh"  
+```
 
 ####  Install Manually [Not Included]
 
@@ -196,11 +204,10 @@ A set of useful Zsh aliases for common tasks:
 > Setting $MOD = Windows key
 ####   Applications
 - `MOD + CTRL + Z` → Open File Manager  
-- `MOD + CTRL + C` → Launch Brave  
+- `MOD + CTRL + C` → Open Brave  
 - `MOD + CTRL + V` → Open VS Code  
 - `MOD + CTRL + M` → Open Mousepad  
-- `MOD + CTRL + A` → Launch AnyType  
-- `MOD + CTRL + G` → Launch ChatGPT  
+- `MOD + CTRL + A` → Open AnyType
 - `MOD + CTRL + W` → Open WhatsApp  
 - `MOD + CTRL + T` → Open Telegram  
 

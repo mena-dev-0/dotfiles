@@ -134,7 +134,7 @@ printf "\n=============\n[2]tools installed \n=============\n"
 
 sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
 powerprofilesctl set balanced
-timedatectl set-local-rtc 1
+sudo timedatectl set-local-rtc 1
 sudo systemctl start bluetooth
 sudo adduser $USER libvirt
 sudo adduser $USER kvm
@@ -186,11 +186,6 @@ sudo cp /home/$USER/.d4con/scripts/90-touchpad.conf /etc/X11/xorg.conf.d
 mkdir -p ~/.themes ~/.config/gtk-3.0
 tar -xf "/home/$USER/.d4con/scripts/Nordic-darker_theme.tar.xz" -C ~/.themes
 echo -e "[Settings]\ngtk-theme-name=Nordic-darker" > ~/.config/gtk-3.0/settings.ini
-
-
-tar -xf "/home/$USER/.d4con/scripts/SleekTheme-Dark_grub.tar.xz" -C /tmp/
-sudo "/tmp/SleekTheme-Dark/install.sh"
-
 
 if [ "$zsh" = "y" ]; then
 	touch ~/.zshenv
